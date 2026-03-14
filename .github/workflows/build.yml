@@ -10,7 +10,7 @@ on:
                 description: 'The Xcode version to use'
                 required: false
                 type: string
-                default: 'Xcode_26.2'
+                default: 'Xcode_26.3'
 
             destination:
                 description: 'The destination platform'
@@ -19,7 +19,7 @@ on:
 
 jobs:
     build:
-        runs-on: macos-15
+        runs-on: macos-26
         name: macOS
         steps:
             -   name: Checkout repository

@@ -17,10 +17,14 @@ on:
                 required: true
                 type: string
 
+            publish-badge:
+                description: 'If true, publish status badge to /refs/badges/ci'
+                required: false
+                type: boolean
+
 jobs:
     build:
         runs-on: macos-26
-        name: macOS
         steps:
             -   name: 💖 Checkout repository 💖
                 uses: actions/checkout@v6
@@ -38,7 +42,7 @@ jobs:
 
             -   name: 💖 Update badge 💖
                 uses: rarestype/rarestbadge@v1
-                if: always()
+                if: always() && inputs.publish-badge
                 with:
                     badge: Build/${{ inputs.destination }}
                     title: ${{ inputs.destination }}

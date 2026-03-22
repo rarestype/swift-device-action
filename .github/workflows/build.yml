@@ -35,3 +35,11 @@ jobs:
                     xcrun xcodebuild build \
                         -scheme "${{ inputs.xcode-scheme }}" \
                         -destination "generic/platform=${{ inputs.destination }}"
+
+            -   name: Update badge
+                uses: rarestype/rarestbadge@v1
+                if: always()
+                with:
+                    badge: Build/${{ inputs.destination }}
+                    title: ${{ inputs.destination }}
+

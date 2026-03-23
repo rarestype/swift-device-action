@@ -17,10 +17,10 @@ on:
                 required: true
                 type: string
 
-            publish-badge:
+            badge-namespace:
                 description: 'If true, publish status badge to /refs/badges/ci'
                 required: false
-                type: boolean
+                type: string
 
 jobs:
     build:
@@ -42,8 +42,8 @@ jobs:
 
             -   name: 💖 Update badge 💖
                 uses: rarestype/rarestbadge@v1
-                if: always() && inputs.publish-badge
+                if: always() && inputs.badge-namespace
                 with:
-                    badge: Build/${{ inputs.destination }}
+                    badge: ${{ inputs.badge-namespace }}/${{ inputs.destination }}
                     title: ${{ inputs.destination }}
 
